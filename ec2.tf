@@ -16,7 +16,7 @@ resource "aws_instance" "servers" {
     subnet_id = "${element(data.aws_subnet_ids.my_subnet_ids.ids, count.index)}"
     vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
     associate_public_ip_address = true	
-    tags {
+    tags = {
         Name = "Terraform-Server-${count.index+1}"
         Env = "Prod"
         Owner = "Sree"
